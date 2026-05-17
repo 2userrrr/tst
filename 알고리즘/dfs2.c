@@ -8,47 +8,65 @@ int map[MAX][MAX] = {
     {1, 1, 0, 0, 0, 1},
     {1, 0, 0, 1, 1, 1},
     {1, 1, 0, 1, 0, 0},
-    {0, 1, 1, 1, 0, 0},
+    {0, 1, 1, 1, 1, 0},
     {0, 0, 0, 0, 1, 1}};
 
-int visited[MAX][MAX] = {
-    0,
-};
+int visited[MAX][MAX] = {0, };
 
 int dx[4] = {1, -1, 0, 0}; // ¿À¸¥ÂÊ ¿ÞÂÊ À§ ¾Æ·¡
 int dy[4] = {0, 0, 1, -1};
 
 int find = 0;
 
-void dfs(int x, int y)
+int bfs(int startx, int starty)
 {
-    visited[x][y] = 1;
-    if(x == row-1 && y == colum-1)
-    {
-        find = 1;
-        return;
-    }
+    int qx[MAX];
+    int qy[MAX];
+    int rear = 0, front = 0;
 
-    for (int i = 0; i < 4; i++)
-    {
-        int nx = x + dx[i];
-        int ny = y + dy[i];
+    qx[rear] = startx;
+    qy[rear] = starty;
+    rear++;
 
-        if (nx >= 0 && nx < row && ny >= 0 && ny < colum)
+    visited[startx][starty] = 1;
+
+    while(rear>front)
+    {
+        int x = qx[front];
+        int y = qy[front];
+        front++;
+
+        if(x == row-1 && y == colum-1)
         {
-            if (map[nx][ny] && !visited[nx][ny])
+            return 1;
+        }
+
+        for(int i = 0; i<4; i++)
+        {
+            int nx = x + dx[i];
+            int ny = y + dy[i];
+
+            if(nx>=0 && nx<row && ny>=0 && ny<colum)
             {
-                dfs(nx, ny);
+                if(map[nx][ny] && !visited[nx][ny])
+                {
+                    visited[nx][ny] = 1;
+                    qx[rear] = nx;
+                    qy[rear] = ny;
+                    rear++;
+                }
             }
         }
     }
+    return 0;
+    
 }
 
 int main()
 {
-    dfs(0, 0);
+    int result = bfs(0, 0);
 
-    if(find)
+    if(result)
     {
         printf("¼¶ Å»Ãâ ¿Ï·á!");
     }
