@@ -14,6 +14,12 @@ int graph[MAX][MAX] = {
     0,
 };
 
+int completed[MAX] = {
+    0,
+};
+
+int todocnt = sizeof(todolist) / sizeof(todolist[0]);
+
 int main()
 {
     int choice;
@@ -37,16 +43,21 @@ int main()
         switch (choice)
         {
         case 1:
-        dfs(0, sizeof(todolist) / sizeof(todolist[0]));
+        dfs(0, todocnt);
             break;
             
         case 2:
+        scanf("%d", completed);
+        completedtodo(completed);
+
             break;
         case 3:
             break;
         case 4:
             break;
         case 5:
+        showCompleted();
+
             break;
         case 6:
             return 0;

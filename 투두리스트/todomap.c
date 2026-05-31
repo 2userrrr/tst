@@ -12,3 +12,23 @@ void dfs(int node, int finish)
             dfs(i, finish);
     }
 }
+
+void completedtodo(int completeNode)
+{
+    if(completeNode < 0 && completeNode >= todocnt)
+    return;
+
+    if(completed[completeNode] == 1)
+    return;
+
+    completed[completeNode] = 1;
+}
+
+void showCompleted()
+{
+    for(int i = 0; i<todocnt; i++)
+    {
+        if(completed[i] == 1)
+            printf("%d",  i);
+    }
+}

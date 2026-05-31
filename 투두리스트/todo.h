@@ -6,9 +6,13 @@
 extern char todolist[MAX][100];
 extern int visited[MAX];
 extern int graph[MAX][MAX];
+extern int completed[MAX];
+extern int todocnt;
 
 void loadTodolist(void);
 void loadGraph(void);
 void dfs(int node, int finish);
+void completedtodo(completed);
+void showCompleted();
 
 #endif
