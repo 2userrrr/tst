@@ -35,7 +35,7 @@ int main()
         printf("1. 전체 학습 경로 보기(DFS)\n");
         printf("2. 단계 완료 처리\n");
         printf("3. 현재 가능한 단계 보기\n");
-        printf("4. 최장 학습 단계 보기\n");
+        printf("4. 현재 진행중 보기\n");
         printf("5. 완료한 단계 보기\n");
         printf("6. 종료\n");
         printf("선택: ");
@@ -60,6 +60,8 @@ int main()
 
             break;
         case 4:
+        showProgress();
+        
             break;
         case 5:
         showCompleted();

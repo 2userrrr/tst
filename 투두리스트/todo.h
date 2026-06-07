@@ -15,5 +15,6 @@ void dfs(int node, int finish);
 void completedtodo(int completeNode);
 void showCompleted(void);
 void showDone(void);
+void showProgress(void);
 
 #endif

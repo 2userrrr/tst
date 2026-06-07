@@ -13,6 +13,7 @@ char* checkComplete(int node)
 
 void dfs(int node, int finish)
 {
+    if(node == finish) return;
     visited[node] = 1;
     printf("[ %s ]", checkComplete(node));
     printf("%s\n", todolist[node]);
@@ -22,6 +23,7 @@ void dfs(int node, int finish)
         if (graph[node][i] == 1 && visited[i] == 0)
             dfs(i, finish);
     }
+    visited[node] = 0;
 }
 
 void completedtodo(int completeNode)
@@ -43,7 +45,7 @@ void showCompleted()
         if(completed[i] == 1)
         {
             printf("[ %s ]", checkComplete(i));
-            printf("%s\n",  todolist[i]);
+            printf("%s\n",  todolist[i]); 
         }
     }
 }
@@ -58,4 +60,20 @@ void showDone()
             printf("%s\n",  todolist[i]);
         }
     }
+}
+
+void showProgress()
+{
+    int num = 0;
+    float ing = 0;
+
+    for(int i = 0; i<todocnt; i++)
+    {
+        if(completed[i] == 1)
+        num++;
+    }
+
+    ing = (float)num/todocnt*100;
+
+    printf("%.2f%%\n", ing);
 }
