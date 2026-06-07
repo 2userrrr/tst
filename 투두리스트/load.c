@@ -43,5 +43,7 @@ void loadTodolist(void)
         index++;
     }
 
+    todocnt = sizeof(todolist) / sizeof(todolist[0]);
+
     fclose(fp);
 }

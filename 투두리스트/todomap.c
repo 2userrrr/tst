@@ -1,9 +1,20 @@
 #include <stdio.h>
 #include "todo.h"
 
+char* checkComplete(int node)
+{
+    char* check = " ";
+    if(completed[node] == 0) check = "Àá±è";
+    else check = "¿Ï·á";
+
+    return check;
+
+}
+
 void dfs(int node, int finish)
 {
     visited[node] = 1;
+    printf("[ %s ]", checkComplete(node));
     printf("%s\n", todolist[node]);
 
     for (int i = 0; i < finish; i++)
@@ -22,6 +33,7 @@ void completedtodo(int completeNode)
     return;
 
     completed[completeNode] = 1;
+    printf("[ %s ]", checkComplete(completeNode));
 }
 
 void showCompleted()
@@ -29,6 +41,21 @@ void showCompleted()
     for(int i = 0; i<todocnt; i++)
     {
         if(completed[i] == 1)
-            printf("%d",  i);
+        {
+            printf("[ %s ]", checkComplete(i));
+            printf("%s\n",  todolist[i]);
+        }
+    }
+}
+
+void showDone()
+{
+    for(int i = 0; i<todocnt; i++)
+    {
+        if(completed[i] == 0)
+        {
+            printf("[ %s ]", checkComplete(i));
+            printf("%s\n",  todolist[i]);
+        }
     }
 }

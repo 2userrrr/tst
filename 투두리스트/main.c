@@ -18,11 +18,13 @@ int completed[MAX] = {
     0,
 };
 
-int todocnt = sizeof(todolist) / sizeof(todolist[0]);
+int todocnt;
+
 
 int main()
 {
     int choice;
+    int completeNode;
 
     loadTodolist();
     loadGraph();
@@ -47,11 +49,15 @@ int main()
             break;
             
         case 2:
-        scanf("%d", completed);
-        completedtodo(completed);
+        printf("¸î ¹øÂ° >");
+        scanf("%d", &completeNode);
+        completedtodo(completeNode);
 
             break;
+
         case 3:
+        showDone();
+
             break;
         case 4:
             break;
